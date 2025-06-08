@@ -1,10 +1,18 @@
-version: '3'
+version: '3.8'
+
 services:
   postgres:
-    image: postgres:12.3
+    image: postgres:15
+    container_name: newsapp_postgres
     ports:
-      - "5432:5432"
+      - "5433:5432"
     environment:
-      - POSTGRES_USER=postgres
-      - POSTGRES_PASSWORD=postgres
-      - POSTGRES_DB=news_db
+      POSTGRES_USER: islam
+      POSTGRES_PASSWORD: 1111
+      POSTGRES_DB: newsdb
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    restart: unless-stopped
+
+volumes:
+  pgdata:

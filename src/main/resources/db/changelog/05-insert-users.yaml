@@ -1,0 +1,36 @@
+databaseChangeLog:
+  - changeSet:
+      id: 05
+      author: islam
+      changes:
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username, value: "ivan.petrov" }
+              - column: { name: email, value: "ivan.petrov@gmail.com" }
+              - column: { name: password, value: "123456" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username, value: "olga.smirnova" }
+              - column: { name: email, value: "olga.smirnova@mail.ru" }
+              - column: { name: password, value: "qwerty" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username, value: "maksim_ivanov" }
+              - column: { name: email, value: "maksim_ivanov@yandex.ru" }
+              - column: { name: password, value: "password1" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: users
+            columns:
+              - column: { name: username, value: "elena_kuznetsova" }
+              - column: { name: email, value: "elena_kuznetsova@outlook.com" }
+              - column: { name: password, value: "welcome" }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }

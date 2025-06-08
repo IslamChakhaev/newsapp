@@ -1,0 +1,115 @@
+databaseChangeLog:
+  - changeSet:
+      id: 07
+      author: islam
+      changes:
+        # --- Технологии (category_id = 1) ---
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Будущее квантовых вычислений" }
+              - column: { name: text, value: "Учёные сделали прорыв в области квантовых технологий..." }
+              - column: { name: author_id, valueNumeric: 1 }
+              - column: { name: category_id, valueNumeric: 1 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Новая разработка от Google" }
+              - column: { name: text, value: "Компания представила инновационный продукт..." }
+              - column: { name: author_id, valueNumeric: 2 }
+              - column: { name: category_id, valueNumeric: 1 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "ИИ в здравоохранении" }
+              - column: { name: text, value: "Машинное обучение помогает врачам ставить диагнозы..." }
+              - column: { name: author_id, valueNumeric: 3 }
+              - column: { name: category_id, valueNumeric: 1 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Новый язык программирования" }
+              - column: { name: text, value: "Разработан язык, объединяющий функциональный и ООП-подход..." }
+              - column: { name: author_id, valueNumeric: 4 }
+              - column: { name: category_id, valueNumeric: 1 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        # --- Спорт (category_id = 2) ---
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Россия — чемпион по хоккею" }
+              - column: { name: text, value: "Сборная выиграла финал у Канады..." }
+              - column: { name: author_id, valueNumeric: 1 }
+              - column: { name: category_id, valueNumeric: 2 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Олимпиада 2024: итоги" }
+              - column: { name: text, value: "Россия заняла 3-е место в общем зачёте..." }
+              - column: { name: author_id, valueNumeric: 2 }
+              - column: { name: category_id, valueNumeric: 2 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Новая звезда футбола" }
+              - column: { name: text, value: "17-летний игрок забил победный гол в финале..." }
+              - column: { name: author_id, valueNumeric: 3 }
+              - column: { name: category_id, valueNumeric: 2 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Возвращение Федора Емельяненко" }
+              - column: { name: text, value: "Легендарный боец снова в октагоне..." }
+              - column: { name: author_id, valueNumeric: 4 }
+              - column: { name: category_id, valueNumeric: 2 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        # --- Культура (category_id = 3) ---
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Фестиваль уличного искусства в Москве" }
+              - column: { name: text, value: "Тысячи зрителей посетили арт-площадку..." }
+              - column: { name: author_id, valueNumeric: 1 }
+              - column: { name: category_id, valueNumeric: 3 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Премьера балета 'Щелкунчик'" }
+              - column: { name: text, value: "Большой театр представил новую интерпретацию..." }
+              - column: { name: author_id, valueNumeric: 2 }
+              - column: { name: category_id, valueNumeric: 3 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Выставка Ван Гога в Эрмитаже" }
+              - column: { name: text, value: "Картины мастера доступны широкой публике..." }
+              - column: { name: author_id, valueNumeric: 3 }
+              - column: { name: category_id, valueNumeric: 3 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }
+
+        - insert:
+            tableName: news
+            columns:
+              - column: { name: title, value: "Литературный фестиваль в Казани" }
+              - column: { name: text, value: "Современные писатели представили свои книги..." }
+              - column: { name: author_id, valueNumeric: 4 }
+              - column: { name: category_id, valueNumeric: 3 }
+              - column: { name: created_at, valueComputed: CURRENT_TIMESTAMP }

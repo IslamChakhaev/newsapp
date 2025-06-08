@@ -1,0 +1,17 @@
+databaseChangeLog:
+  - include:
+      file: db/changelog/01-create-users-table.yaml
+  - include:
+      file: db/changelog/02-create-category-table.yaml
+  - include:
+      file: db/changelog/03-create-news-table.yaml
+  - include:
+      file: db/changelog/04-create-comments-table.yaml
+  - include:
+      file: db/changelog/05-insert-users.yaml
+  - include:
+      file: db/changelog/06-insert-categories.yaml
+  - include:
+      file: db/changelog/07-insert-news.yaml
+  - include:
+      file: db/changelog/08-insert-comments.yaml

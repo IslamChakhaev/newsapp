@@ -1,1 +1,24 @@
+spring:
+  datasource:
+    url: jdbc:postgresql://localhost:5433/newsdb
+    username: islam
+    password: 1111
+    driver-class-name: org.postgresql.Driver
 
+  jpa:
+    hibernate:
+      ddl-auto: none
+    show-sql: false
+    properties:
+      hibernate:
+        format_sql: true
+
+  liquibase:
+    enabled: true
+    drop-first: true
+    change-log: classpath:db/changelog/db.changelog-master.yaml
+
+app:
+  check-client-api-header: true
+  client-api-key: 12345
+  check-user-id-header: true

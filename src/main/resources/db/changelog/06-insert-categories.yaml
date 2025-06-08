@@ -1,0 +1,22 @@
+databaseChangeLog:
+  - changeSet:
+      id: 06
+      author: islam
+      changes:
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: name, value: "Технологии" }
+              - column: { name: description, value: "Новости из мира IT и науки" }
+
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: name, value: "Спорт" }
+              - column: { name: description, value: "Последние события в спорте" }
+
+        - insert:
+            tableName: categories
+            columns:
+              - column: { name: name, value: "Культура" }
+              - column: { name: description, value: "Кино, искусство, литература" }
