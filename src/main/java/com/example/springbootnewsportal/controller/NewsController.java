@@ -3,7 +3,7 @@ package com.example.springbootnewsportal.controller;
 import com.example.springbootnewsportal.dto.request.NewsRequestDto;
 import com.example.springbootnewsportal.dto.response.NewsDetailsResponseDto;
 import com.example.springbootnewsportal.dto.response.NewsResponseDto;
-import com.example.springbootnewsportal.service.NewsService;
+import com.example.springbootnewsportal.service.api.NewsService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;

@@ -1,8 +1,8 @@
 package com.example.springbootnewsportal.mapper;
 
-import com.example.springbootnewsportal.dto.request.UserRequestDto;
+import com.example.springbootnewsportal.dto.request.user.RegisterRequestDto;
 import com.example.springbootnewsportal.dto.response.UserResponseDto;
-import com.example.springbootnewsportal.entity.User;
+import com.example.springbootnewsportal.model.User;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 
@@ -13,8 +13,15 @@ public interface UserMapper {
     @Mapping(target = "createdAt", ignore = true)
     @Mapping(target = "newsList", ignore = true)
     @Mapping(target = "comments", ignore = true)
-    User toEntity(UserRequestDto dto);
+    @Mapping(target = "roles", ignore = true)
+    @Mapping(target = "locked", ignore = true)
+    @Mapping(target = "enabled", ignore = true)
+    @Mapping(target = "password", ignore = true) // шифруем вручную
+    User toEntity(RegisterRequestDto dto);
 
     UserResponseDto toResponseDto(User user);
+
+
+
 }
 

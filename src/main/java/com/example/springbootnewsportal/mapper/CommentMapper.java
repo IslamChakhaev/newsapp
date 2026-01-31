@@ -2,7 +2,7 @@ package com.example.springbootnewsportal.mapper;
 
 import com.example.springbootnewsportal.dto.request.CommentRequestDto;
 import com.example.springbootnewsportal.dto.response.CommentResponseDto;
-import com.example.springbootnewsportal.entity.Comment;
+import com.example.springbootnewsportal.model.Comment;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

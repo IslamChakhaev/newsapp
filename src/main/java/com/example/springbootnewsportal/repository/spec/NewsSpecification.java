@@ -1,6 +1,6 @@
 package com.example.springbootnewsportal.repository.spec;
 
-import com.example.springbootnewsportal.entity.News;
+import com.example.springbootnewsportal.model.News;
 import org.springframework.data.jpa.domain.Specification;
 
 public class NewsSpecification {

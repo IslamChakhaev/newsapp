@@ -2,7 +2,7 @@ package com.example.springbootnewsportal.controller;
 
 import com.example.springbootnewsportal.dto.request.CommentRequestDto;
 import com.example.springbootnewsportal.dto.response.CommentResponseDto;
-import com.example.springbootnewsportal.service.CommentService;
+import com.example.springbootnewsportal.service.api.CommentService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;

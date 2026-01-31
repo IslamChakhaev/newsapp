@@ -1,12 +1,13 @@
 package com.example.springbootnewsportal.service.impl;
 
+import com.example.springbootnewsportal.aop.universal.Authorize;
 import com.example.springbootnewsportal.dto.request.CategoryRequestDto;
 import com.example.springbootnewsportal.dto.response.CategoryResponseDto;
-import com.example.springbootnewsportal.entity.Category;
+import com.example.springbootnewsportal.model.Category;
 import com.example.springbootnewsportal.exception.ResourceNotFoundException;
 import com.example.springbootnewsportal.mapper.CategoryMapper;
 import com.example.springbootnewsportal.repository.CategoryRepository;
-import com.example.springbootnewsportal.service.CategoryService;
+import com.example.springbootnewsportal.service.api.CategoryService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -22,15 +23,22 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
+    @Authorize(
+            roles = {"ROLE_ADMIN", "ROLE_MODERATOR"}
+    )
     @Transactional
     public CategoryResponseDto create(CategoryRequestDto dto) {
         Category category = categoryMapper.toEntity(dto);
+
         Category saved = categoryRepository.save(category);
 
         return categoryMapper.toResponseDto(saved);
     }
 
     @Override
+    @Authorize(
+            roles = {"ROLE_USER", "ROLE_ADMIN", "ROLE_MODERATOR"}
+    )
     public Page<CategoryResponseDto> findAll(int page, int size) {
         Page<Category> categories = categoryRepository.findAll(PageRequest.of(page, size));
         return categories.map(categoryMapper::toResponseDto);
@@ -38,6 +46,9 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
+    @Authorize(
+            roles = {"ROLE_USER", "ROLE_ADMIN", "ROLE_MODERATOR"}
+    )
     public CategoryResponseDto findById(Long id) {
         Category category = findByIdOrThrow(id);
 
@@ -45,6 +56,9 @@ public class CategoryServiceImpl implements CategoryService {
     }
 
     @Override
+    @Authorize(
+            roles = {"ROLE_ADMIN", "ROLE_MODERATOR"}
+    )
     @Transactional
     public CategoryResponseDto update(Long id, CategoryRequestDto dto) {
         Category category = findByIdOrThrow(id);
@@ -59,6 +73,9 @@ public class CategoryServiceImpl implements CategoryService {
 
 
     @Override
+    @Authorize(
+            roles = {"ROLE_ADMIN", "ROLE_MODERATOR"}
+    )
     @Transactional
     public void delete(Long id) {
         findByIdOrThrow(id);

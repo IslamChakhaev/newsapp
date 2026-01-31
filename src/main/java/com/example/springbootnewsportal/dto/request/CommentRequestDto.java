@@ -1,7 +1,6 @@
 package com.example.springbootnewsportal.dto.request;
 
 import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 import lombok.*;
 
 @Getter
@@ -12,7 +11,4 @@ public class CommentRequestDto {
 
     @NotBlank(message = "Comment content must not be blank")
     private String content;
-
-    @NotNull(message = "News ID must not be null")
-    private Long newsId;
 }

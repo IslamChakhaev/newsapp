@@ -1,3 +1,4 @@
+# application.yml
 spring:
   datasource:
     url: jdbc:postgresql://localhost:5433/newsdb
@@ -13,6 +14,12 @@ spring:
       hibernate:
         format_sql: true
 
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: 1111
+
   liquibase:
     enabled: true
     drop-first: true
@@ -22,3 +29,16 @@ app:
   check-client-api-header: true
   client-api-key: 12345
   check-user-id-header: true
+
+security:
+    jwt:
+      token-prefix: "Bearer"
+      header: "Authorization"
+      access:
+        secret: "access-secret-key-example"
+        expiration: 15m
+      refresh:
+        secret: "refresh-secret-key-example"
+        expiration: 7d
+
+

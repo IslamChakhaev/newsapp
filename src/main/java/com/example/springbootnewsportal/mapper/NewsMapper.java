@@ -3,7 +3,7 @@ package com.example.springbootnewsportal.mapper;
 import com.example.springbootnewsportal.dto.request.NewsRequestDto;
 import com.example.springbootnewsportal.dto.response.NewsDetailsResponseDto;
 import com.example.springbootnewsportal.dto.response.NewsResponseDto;
-import com.example.springbootnewsportal.entity.News;
+import com.example.springbootnewsportal.model.News;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
 

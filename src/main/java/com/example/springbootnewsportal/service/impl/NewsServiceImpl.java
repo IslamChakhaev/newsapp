@@ -1,20 +1,22 @@
 package com.example.springbootnewsportal.service.impl;
 
-import com.example.springbootnewsportal.aop.CheckNewsOwnership;
+import com.example.springbootnewsportal.aop.annotation.CheckNewsOwnership;
+import com.example.springbootnewsportal.aop.universal.Authorize;
+import com.example.springbootnewsportal.aop.universal.EntityType;
 import com.example.springbootnewsportal.dto.request.NewsRequestDto;
 import com.example.springbootnewsportal.dto.response.NewsDetailsResponseDto;
 import com.example.springbootnewsportal.dto.response.NewsResponseDto;
-import com.example.springbootnewsportal.entity.Category;
-import com.example.springbootnewsportal.entity.News;
-import com.example.springbootnewsportal.entity.User;
+import com.example.springbootnewsportal.model.Category;
+import com.example.springbootnewsportal.model.News;
+import com.example.springbootnewsportal.model.User;
 import com.example.springbootnewsportal.exception.ResourceNotFoundException;
 import com.example.springbootnewsportal.mapper.NewsMapper;
 import com.example.springbootnewsportal.repository.CategoryRepository;
 import com.example.springbootnewsportal.repository.NewsRepository;
 import com.example.springbootnewsportal.repository.UserRepository;
 import com.example.springbootnewsportal.repository.spec.NewsSpecification;
-import com.example.springbootnewsportal.scopes.AuthenticatedUser;
-import com.example.springbootnewsportal.service.NewsService;
+import com.example.springbootnewsportal.security.scopes.AuthenticatedUser;
+import com.example.springbootnewsportal.service.api.NewsService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -39,6 +41,9 @@ public class NewsServiceImpl implements NewsService {
      * Сначала проверяем, что существует автор и категория, затем сохраняем новость.
      */
     @Override
+    @Authorize(
+            roles = {"ROLE_USER", "ROLE_ADMIN", "ROLE_MODERATOR"}
+    )
     @Transactional
     public NewsResponseDto create(NewsRequestDto dto) {
         // Получаем ID текущего пользователя из запроса (через RequestScope)
@@ -66,10 +71,10 @@ public class NewsServiceImpl implements NewsService {
         return newsMapper.toResponseDto(saved);
     }
 
-    /**
-     * Получение всех новостей с поддержкой фильтрации и пагинации.
-     */
     @Override
+    @Authorize(
+            roles = {"ROLE_USER", "ROLE_ADMIN", "ROLE_MODERATOR"}
+    )
     public Page<NewsResponseDto> findAll(int page, int size, Long authorId, Long categoryId) {
         Specification<News> spec = Specification.allOf(
                 NewsSpecification.hasAuthor(authorId),
@@ -82,10 +87,10 @@ public class NewsServiceImpl implements NewsService {
     }
 
 
-    /**
-     * Получение одной новости по её ID, с полной информацией.
-     */
     @Override
+    @Authorize(
+            roles = {"ROLE_USER", "ROLE_ADMIN", "ROLE_MODERATOR"}
+    )
     public NewsDetailsResponseDto findById(Long id) {
         // Получаем новость по ID, если не существует — бросаем исключение
         News news = findByIdOrThrow(id);
@@ -99,7 +104,12 @@ public class NewsServiceImpl implements NewsService {
      * Метод защищён через AOP — только владелец может выполнить.
      */
     @Override
-    @CheckNewsOwnership
+    @Authorize(
+            roles = {"ROLE_ADMIN", "ROLE_MODERATOR"},
+            checkOwnership = true,
+            entity = EntityType.NEWS,
+            idParam = "id"
+    )
     @Transactional
     public NewsResponseDto update(Long id, NewsRequestDto dto) {
         // Проверяем, существует ли новость с таким ID или выбрасываем исключение
@@ -127,7 +137,12 @@ public class NewsServiceImpl implements NewsService {
      * Только автор может удалить (проверка через AOP).
      */
     @Override
-    @CheckNewsOwnership
+    @Authorize(
+            roles = {"ROLE_ADMIN", "ROLE_MODERATOR"},
+            checkOwnership = true,
+            entity = EntityType.NEWS,
+            idParam = "id"
+    )
     @Transactional
     public void delete(Long id) {
         // Проверяем есть ли новость в бд или выбрасываем исключение

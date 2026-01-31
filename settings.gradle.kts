@@ -1,1 +1,1 @@
-rootProject.name = "spring-boot-news-portal"
+rootProject.name = "news-portal"

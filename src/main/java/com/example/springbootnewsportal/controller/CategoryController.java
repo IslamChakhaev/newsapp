@@ -2,7 +2,7 @@ package com.example.springbootnewsportal.controller;
 
 import com.example.springbootnewsportal.dto.request.CategoryRequestDto;
 import com.example.springbootnewsportal.dto.response.CategoryResponseDto;
-import com.example.springbootnewsportal.service.CategoryService;
+import com.example.springbootnewsportal.service.api.CategoryService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
